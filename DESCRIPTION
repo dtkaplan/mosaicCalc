@@ -1,7 +1,7 @@
 Package: mosaicCalc
 Type: Package
 Title: Function-Based Numerical and Symbolic Differentiation and Antidifferentiation
-Description:  Part of the Project MOSAIC (<http://mosaic-web.org/>)
+Description: Part of the Project MOSAIC (<http://mosaic-web.org/>)
     suite that provides utility functions for doing calculus 
     (differentiation and integration) in R. The main differentiation and 
     antidifferentiation operators are described using formulas and return functions 
@@ -21,12 +21,14 @@ Imports:
 Suggests: 
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    ggformula
 Author: Daniel T. Kaplan <kaplan@macalester.edu>, Randall Pruim <rpruim@calvin.edu>, Nicholas J. Horton <nhorton@amherst.edu>
 Maintainer: Randall Pruim <rpruim@calvin.edu>
+VignetteBuilder: knitr
 License: GPL (>=2)
 LazyLoad: yes
 LazyData: yes
 URL: https://github.com/ProjectMOSAIC/mosaicCalc
 BugReports: https://github.com/ProjectMOSAIC/mosaicCalc/issues
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.1.1

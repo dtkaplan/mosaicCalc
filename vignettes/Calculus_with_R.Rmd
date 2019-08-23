@@ -2,7 +2,7 @@
 title: "Calculus with R"
 author: "Daniel Kaplan"
 date: "October 17, 2017"
-output: rmarkdown::html_vignette
+
 vignette: >
   %\VignetteIndexEntry{Calculus_with_R}
   %\VignetteEngine{knitr::rmarkdown}

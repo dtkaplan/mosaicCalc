@@ -35,10 +35,5 @@ a list with two slots: names and functions
 parameters are stored as extra arguments
 the order of the dynamical variables (and "t") is important and will be used
 later
-
-Create a functions with a vector argument of state, for use in rk()
-
-Simplifying expressions, e.g. pure numbers go to numbers
-Written by Aaron Mayerson, May 2013
 }
 \keyword{internal}
