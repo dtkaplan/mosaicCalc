@@ -1,8 +1,24 @@
 #' Graph a function of one or two variables
 #' 
+#' @param a function-defining formula of the sort accepted by `makeFun()`
+#' @param ... additional arguments setting the axis limits. See notes.
+#' @param tile Logical indicating whether to draw a background layer of 
+#' continuous color showing the values of the function
+#' @param alpha.tile a number between zero and one giving the alpha 
+#' for the tile layer, if any. (default: 0.4)
+#' 
+#' @note You can specify the extent of the x- and y-axes in any of three ways:
+#' 1. for a formula variable, say, t, limits specified as `t = c(0,10)`
+#' 2. like (1), but specify tlim
+#' 3. either xlim or ylim depending on the axis.
+#' 
+#' @examples 
+#' graphFun(cos(t) ~ t, tlim = c(0, 10))
+#' graphFun(cos(t) * y ~ y + t, tlim = c(0, 10), ylim = c(0,5))
+#'
 #' @export
-graphFun <- function(formula, ..., labels = "top.pieces", 
-                     contour = TRUE, tile = TRUE, alpha.tile = 0.4) {
+graphFun <- function(formula, ..., labels = TRUE, 
+                     tile = TRUE, alpha.tile = 0.4) {
   extras <- list(...)
   if (!require("ggformula")) stop("Must install ggformula package")
   # Get the arguments in order
@@ -17,7 +33,8 @@ graphFun <- function(formula, ..., labels = "top.pieces",
     # Draw a line graph
   if (length(arguments) == 1) {
     arglist <- c(list(formula, xlim = xlim$range), extras)
-    P <- do.call(ggformula::gf_fun, arglist)
+    P <- do.call(ggformula::gf_fun, arglist) %>%
+      gf_labs(x = arguments[1], y = "value of function") 
   } else if (length(arguments) == 2) {
     ylim <- find_limit_argument(arguments[2], extras, default = "y")
     if (!is.null(ylim$name)) extras[ylim$name] <- NULL

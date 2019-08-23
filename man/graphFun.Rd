@@ -4,9 +4,30 @@
 \alias{graphFun}
 \title{Graph a function of one or two variables}
 \usage{
-graphFun(formula, ..., labels = "top.pieces", fill = TRUE,
-  alpha.tile = 0.4)
+graphFun(formula, ..., labels = TRUE, tile = TRUE, alpha.tile = 0.4)
+}
+\arguments{
+\item{...}{additional arguments setting the axis limits. See notes.}
+
+\item{tile}{Logical indicating whether to draw a background layer of 
+continuous color showing the values of the function}
+
+\item{alpha.tile}{a number between zero and one giving the alpha 
+for the tile layer, if any. (default: 0.4)}
+
+\item{a}{function-defining formula of the sort accepted by `makeFun()`}
 }
 \description{
 Graph a function of one or two variables
+}
+\note{
+You can specify the extent of the x- and y-axes in any of three ways:
+1. for a formula variable, say, t, limits specified as `t = c(0,10)`
+2. like (1), but specify tlim
+3. either xlim or ylim depending on the axis.
+}
+\examples{
+graphFun(cos(t) ~ t, tlim = c(0, 10))
+graphFun(cos(t) * y ~ y + t, tlim = c(0, 10), ylim = c(0,5))
+
 }
