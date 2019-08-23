@@ -4,9 +4,15 @@
 \alias{graphFun}
 \title{Graph a function of one or two variables}
 \usage{
-graphFun(formula, ..., labels = TRUE, tile = TRUE, alpha.tile = 0.4)
+graphFun(object = NULL, formula, ..., labels = TRUE, tile = TRUE,
+  alpha.tile = 0.4)
 }
 \arguments{
+\item{object}{Used internally to handle previously made graphics
+piped into the call to `graphFun`. Ignored otherwise.}
+
+\item{formula}{a function-defining formula of the sort accepted by `makeFun()`}
+
 \item{...}{additional arguments setting the axis limits. See notes.}
 
 \item{tile}{Logical indicating whether to draw a background layer of 
@@ -14,8 +20,6 @@ continuous color showing the values of the function}
 
 \item{alpha.tile}{a number between zero and one giving the alpha 
 for the tile layer, if any. (default: 0.4)}
-
-\item{a}{function-defining formula of the sort accepted by `makeFun()`}
 }
 \description{
 Graph a function of one or two variables

@@ -1,6 +1,8 @@
 #' Graph a function of one or two variables
 #' 
-#' @param a function-defining formula of the sort accepted by `makeFun()`
+#' @param object Used internally to handle previously made graphics
+#' piped into the call to `graphFun`. Ignored otherwise. 
+#' @param formula a function-defining formula of the sort accepted by `makeFun()`
 #' @param ... additional arguments setting the axis limits. See notes.
 #' @param tile Logical indicating whether to draw a background layer of 
 #' continuous color showing the values of the function
@@ -17,9 +19,14 @@
 #' graphFun(cos(t) * y ~ y + t, tlim = c(0, 10), ylim = c(0,5))
 #'
 #' @export
-graphFun <- function(formula, ..., labels = TRUE, 
+graphFun <- function(object = NULL, formula, ..., labels = TRUE, 
                      tile = TRUE, alpha.tile = 0.4) {
   extras <- list(...)
+  if (inherits(object, "formula")) {
+    formula <- object
+    object <- NULL
+  }
+  
   if (!require("ggformula")) stop("Must install ggformula package")
   # Get the arguments in order
   arguments <- as.character(all.vars(rlang::f_rhs(formula)))
@@ -32,14 +39,14 @@ graphFun <- function(formula, ..., labels = TRUE,
   if (!is.null(xlim$name)) extras[xlim$name] <- NULL
     # Draw a line graph
   if (length(arguments) == 1) {
-    arglist <- c(list(formula, xlim = xlim$range), extras)
+    arglist <- c(list(object, formula, xlim = xlim$range), extras)
     P <- do.call(ggformula::gf_fun, arglist) %>%
       gf_labs(x = arguments[1], y = "value of function") 
   } else if (length(arguments) == 2) {
     ylim <- find_limit_argument(arguments[2], extras, default = "y")
     if (!is.null(ylim$name)) extras[ylim$name] <- NULL
     arglist <- c(
-      list(formula, xlim=xlim$range, ylim = ylim$range, 
+      list(object, formula, xlim=xlim$range, ylim = ylim$range, 
            labels = labels, alpha.tile = alpha.tile,
            tile = tile), 
       extras)
