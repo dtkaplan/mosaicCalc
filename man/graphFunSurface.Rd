@@ -2,7 +2,7 @@
 % Please edit documentation in R/graphFunSurface.R
 \name{graphFunSurface}
 \alias{graphFunSurface}
-\title{Graph function of two variables as a surface}
+\title{Graph a function of two variables as a surface}
 \usage{
 graphFunSurface(formula, ...)
 }
@@ -12,5 +12,11 @@ graphFunSurface(formula, ...)
 \item{...}{limits for the plot. See examples.}
 }
 \description{
-Graph function of two variables as a surface
+Graph a function of two variables as a surface
+}
+\examples{
+graphFunSurface(
+  sin(2*pi*t/10)*exp(-.2*x) ~ t & x, 
+  tlim=range(0,20), xlim=range(0,10))
+
 }

@@ -1,4 +1,4 @@
-#' Graph function of two variables as a surface
+#' Graph a function of two variables as a surface
 #' 
 #' @param formula of the sort accepted by `makeFun()`
 #' @param ... limits for the plot. See examples.
