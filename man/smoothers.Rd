@@ -12,8 +12,13 @@ smoother(formula, data, span = 0.5, degree = 2, ...)
 
 linearModel(formula, data, ...)
 
-interpolating.function(formula, data, method = "fmm",
-  monotonic = FALSE, connect = FALSE)
+interpolating.function(
+  formula,
+  data,
+  method = "fmm",
+  monotonic = FALSE,
+  connect = FALSE
+)
 
 spliner(formula, data, method = "fmm", monotonic = FALSE)
 

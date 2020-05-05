@@ -4,8 +4,14 @@
 \alias{graphFun}
 \title{Graph a function of one or two variables}
 \usage{
-graphFun(object = NULL, formula, ..., labels = TRUE, tile = TRUE,
-  alpha.tile = 0.4)
+graphFun(
+  object = NULL,
+  formula,
+  ...,
+  labels = TRUE,
+  tile = TRUE,
+  alpha.tile = 0.4
+)
 }
 \arguments{
 \item{object}{Used internally to handle previously made graphics

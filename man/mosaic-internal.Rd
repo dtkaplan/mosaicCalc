@@ -22,11 +22,6 @@ rkFunction(DE, additionalArguments = list())
 
 \item{additionalAssignments, }{a list
 return a function}
-
-\item{DE}{representation of DE, the result of fetchDynamics}
-
-\item{additionalAssignments, }{a list
-return a function}
 }
 \value{
 a list with two slots: names and functions
